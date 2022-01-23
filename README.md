@@ -1,4 +1,8 @@
-# svelte-virtual-list-ce ([demo](https://svelte.dev/repl/f78ddd84a1a540a9a40512df39ef751b))
+# svelte-virtual-list-ce ([demo](https://svelte.dev/repl/3ed4b471023045e68b3b5a181dabb59d?version=3.46.2))
+
+_Community-Edition fork of [svelte-virtual-list](https://github.com/sveltejs/svelte-virtual-list)_
+
+![logo.svg](./logo_svelte-virtual-list-ce.svg)
 
 A virtual list component for Svelte apps. Instead of rendering all your data, `<VirtualList>` just renders the bits that are visible, keeping your page nice and light.
 
@@ -57,7 +61,6 @@ By default, the `<VirtualList>` component will fill the vertical space of its co
 </VirtualList>
 ```
 
-
 ## `itemHeight`
 
 You can optimize initial display and scrolling when the height of items is known in advance. This should be a number representing a pixel value.
@@ -66,6 +69,44 @@ You can optimize initial display and scrolling when the height of items is known
 <VirtualList itemHeight={48} items={things} let:item>
   <p>{item.number}: {item.name}</p>
 </VirtualList>
+```
+
+## `scrollToIndex()`
+
+You can jump to anywhere in the list, by calling `scrollToIndex` with one of the list items index.
+
+```html
+<script>
+  let scrollToIndex;
+
+  function handleButtonClick (event) {
+    // ... define your index variable here
+    scrollToIndex(index);
+  };
+</script>
+
+<VirtualList bind:scrollToIndex items={things}>
+  <p>{item.number}: {item.name}</p>
+</VirtualList>
+```
+
+You can also `export let scrollToIndex` to call it from outside. In this case it should be initialized with `undefined`, to prevent warnings in the logs:
+
+```html
+<!-- InnerComponent.svelte -->
+<script>
+  export let scrollToIndex = undefined;
+</script>
+
+<!-- OuterComponent.svelte -->
+<script>
+  let scrollToIndex;
+  function someLogic () {
+    scrollToIndex(index);
+  };
+</script>
+
+<InnerComponent bind:scrollToIndex></InnerComponent>
 ```
 
 
