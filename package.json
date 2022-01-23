@@ -1,6 +1,6 @@
 {
-  "name": "@sveltejs/svelte-virtual-list",
-  "version": "3.0.1",
+  "name": "@gitbreaker222/svelte-virtual-list-ce",
+  "version": "3.1.0-beta",
   "description": "A <VirtualList> component for Svelte apps",
   "main": "VirtualList.svelte",
   "svelte": "VirtualList.svelte",
@@ -28,7 +28,7 @@
     "tap-dot": "^2.0.0",
     "tape-modern": "^1.1.1"
   },
-  "repository": "https://github.com/sveltejs/svelte-virtual-list",
+  "repository": "https://github.com/gitbreaker222/svelte-virtual-list",
   "author": "Rich Harris",
   "license": "LIL",
   "keywords": [
