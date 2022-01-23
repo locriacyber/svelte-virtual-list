@@ -1,11 +1,11 @@
-# svelte-virtual-list ([demo](https://svelte.dev/repl/f78ddd84a1a540a9a40512df39ef751b))
+# svelte-virtual-list-ce ([demo](https://svelte.dev/repl/f78ddd84a1a540a9a40512df39ef751b))
 
 A virtual list component for Svelte apps. Instead of rendering all your data, `<VirtualList>` just renders the bits that are visible, keeping your page nice and light.
 
 ## Installation
 
 ```bash
-yarn add @sveltejs/svelte-virtual-list
+yarn add svelte-virtual-list-ce
 ```
 
 
@@ -13,7 +13,7 @@ yarn add @sveltejs/svelte-virtual-list
 
 ```html
 <script>
-  import VirtualList from '@sveltejs/svelte-virtual-list';
+  import VirtualList from 'svelte-virtual-list-ce';
 
   const things = [
     // these can be any values you like
