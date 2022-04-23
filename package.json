@@ -14,19 +14,22 @@
     "lint": "eslint src/VirtualList.svelte"
   },
   "devDependencies": {
-    "eslint": "^5.12.1",
+    "@rollup/plugin-commonjs": "^22.0.0-14",
+    "@rollup/plugin-node-resolve": "^13",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "eslint": "^6",
     "eslint-plugin-svelte3": "git+https://github.com/sveltejs/eslint-plugin-svelte3.git",
     "port-authority": "^1.0.5",
-    "puppeteer": "^1.9.0",
-    "rollup": "^1.1.2",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
+    "puppeteer-core": "^13.6.0",
+    "rollup": "^2.68",
     "rollup-plugin-svelte": "^6.1.1",
     "sirv": "^0.2.2",
     "svelte": "^3.0.0-beta.2",
     "tap-diff": "^0.1.1",
     "tap-dot": "^2.0.0",
-    "tape-modern": "^1.1.1"
+    "tape-modern": "^1.1.1",
+    "tslib": "^2.4.0",
+    "typescript": "^3.7.0"
   },
   "repository": "https://github.com/gitbreaker222/svelte-virtual-list",
   "author": "Rich Harris",

@@ -1,7 +1,7 @@
 const http = require('http');
 const ports = require('port-authority');
 const sirv = require('sirv');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 
 async function go() {
 	const port = await ports.find(1234);

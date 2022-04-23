@@ -20,7 +20,17 @@
 
 	let top = 0;
 	let bottom = 0;
-	let average_height;
+	let average_height = 0;
+
+	$: {
+		if (items.length > 0) {
+			const remaining = items.length - end;
+			if (remaining > 0) bottom = remaining * average_height;
+			else bottom = 0;
+		} else {
+			bottom = 0;
+		}
+	}
 
 	$: visible = items.slice(start, end).map((data, i) => {
 		return { index: i + start, data };
@@ -59,10 +69,8 @@
 
 		end = i;
 
-		const remaining = items.length - end;
 		average_height = (top + content_height) / end;
 
-		bottom = remaining * average_height;
 		height_map.length = items.length;
 
 	}
@@ -101,11 +109,9 @@
 
 		end = i;
 
-		const remaining = items.length - end;
 		average_height = y / end;
 
 		while (i < items.length) height_map[i++] = average_height;
-		bottom = remaining * average_height;
 
 		// TODO if we overestimated the space these
 		// rows would occupy we may need to add some
@@ -118,14 +124,26 @@
 		const _itemHeight = itemHeight || average_height;
 		const distance = itemsDelta * _itemHeight;
 		opts = {
-			left: 0,
 			top: scrollTop + distance,
-			behavior: 'smooth',
 			...opts
 		};
 		viewport.scrollTo(opts);
 	}
 	
+	/**
+	 * @param node {HTMLElement}
+	 * @param _parameters {any}
+	 */
+	function bindOffsetHeight(node, _parameters) {
+		function update() {
+			viewport_height = node.offsetHeight
+		}
+		update()
+		node.addEventListener("scroll", update)
+		node.addEventListener("resize", update)
+		return {}
+	}
+
 	// trigger initial refresh
 	onMount(() => {
 		rows = contents.getElementsByTagName('svelte-virtual-list-row');
@@ -149,6 +167,7 @@
 		overflow: hidden;
 	}
 </style>
+	<!-- use:bindOffsetHeight -->
 
 <svelte-virtual-list-viewport
 	bind:this={viewport}
